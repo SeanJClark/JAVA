@@ -7,7 +7,6 @@ import java.util.Scanner;
  *
  * @author Sean Clark
  */
-
 public class P5 {
 
     /**
