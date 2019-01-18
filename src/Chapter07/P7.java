@@ -1,7 +1,6 @@
 package Chapter07;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Program to compute the average of an array
@@ -19,23 +18,25 @@ public class P7 {
         Scanner input = new Scanner(System.in);
 
         System.out.print("How many numbers will be read: ");
-        int[] numbers = new int[input.nextInt()];
-
-        fillArray(numbers, input);
+        int place_holder = input.nextInt();
+        ArrayList<Integer> numbers = new ArrayList<>(place_holder);
+        fillArray(numbers, place_holder, input);
         System.out.println("The average is " + average(numbers));
         displayArray(numbers);
     }
 
     /**
-     * Fins the length of the array
+     * Finds the length of the array
      *
      * @param numbers number of charters in the array
+     * @param place_holder amount of times the for loop is repeated
      * @param input number of numbers entered by user
      */
-    public static void fillArray(int[] numbers, Scanner input) {
-        System.out.print("Enter " + numbers.length + " elements: ");
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = input.nextInt();
+    public static void fillArray(ArrayList<Integer> numbers,int place_holder, Scanner input) {
+ 
+        for (int i = 0; i < place_holder; i++) {
+            System.out.print("Enter an element: ");
+            numbers.add(input.nextInt());
         }
     }
 
@@ -45,14 +46,14 @@ public class P7 {
      * @param numbers number of numbers in the array
      * @return average
      */
-    public static double average(int[] numbers) {
+    public static double average(ArrayList<Integer> numbers) {
         double sum = 0;
 
-        for (int i = 0; i < numbers.length; i++) {
-            sum = sum + numbers[i];
+        for (int i = 0; i < numbers.size(); i++) {
+            sum = sum + numbers.get(i);
         }
 
-        return sum / numbers.length;
+        return sum / numbers.size();
     }
 
     /**
@@ -60,7 +61,7 @@ public class P7 {
      *
      * @param numbers contents of array
      */
-    public static void displayArray(int[] numbers) {
-        System.out.println("The contents of the array: " + Arrays.toString(numbers));
+    public static void displayArray(ArrayList<Integer> numbers) {
+        System.out.println("The contents of the array: " + (numbers));
     }
 }
